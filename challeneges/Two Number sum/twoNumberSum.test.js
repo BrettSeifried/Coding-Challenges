@@ -1,9 +1,7 @@
-// const program = require('./program');
-// const chai = require('chai');
+const { twoNumberSum } = require('./twoNumberSum');
 
-// it('Test Case #1', () => {
-//   const output = program.twoNumberSum([3, 5, -4, 8, 11, 1, -1, 6], 10);
-//   chai.expect(output.length === 2).to.deep.equal(true);
-//   chai.expect(output.includes(11)).to.deep.equal(true);
-//   chai.expect(output.includes(-1)).to.deep.equal(true);
-// });
+test('Test Case #1', (expect) => {
+  const expected = [-1, 11];
+  const actual = twoNumberSum([3, 5, -4, 8, 11, 1, -1, 6], 10);
+  expect.deepEqual(actual, expected);
+});
