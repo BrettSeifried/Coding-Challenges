@@ -51,3 +51,53 @@ function sortedSquaredArray(array) {
   return sortedArr;
 }
 console.log('sortedArr', sortedSquaredArray([1, 2, 3, 5, 6, 8, 9]));
+
+// used on line 73, looks to results array on who won, 1 or 0
+const homeWin = 1;
+
+function tournamentWinner(competitions, results) {
+  // Write your code here.
+
+  // setting a vairable for a Winning team
+  let leadTeam = '';
+
+  //set the object for keeping score
+  const scores = { [leadTeam]: 0 };
+
+  //Run through the competitions being played
+  for (let i = 0; i < competitions.length; i++) {
+    //Pulls 0 or 1, from results array to see who won
+    const result = results[i];
+    // Returns which TEAM won.
+    const [homeTeam, awayTeam] = competitions[i];
+    // Line 55, if 1, home team wins, else 0 and away team wins
+    const winningTeam = result === homeWin ? homeTeam : awayTeam;
+
+    //Line 88 Function
+    updateScores(winningTeam, 3, scores);
+
+    // if winning team NOW has more points than the lead team, make it the lead team.
+    if (scores[winningTeam] > scores[leadTeam]) {
+      leadTeam = winningTeam;
+    }
+  }
+  return leadTeam;
+}
+
+// Line 64 Grabs team name, gives points, updates scores array
+function updateScores(team, points, scores) {
+  //if no team is in scores, inserts into object
+  if (!(team in scores)) scores[team] = 0;
+  //adds points (3) from line 77
+  scores[team] += points;
+}
+
+console.log(
+  'tournamentWinner',
+  tournamentWinner(
+    ['HTML', 'C#'],
+    ['C#', 'Python'],
+    ['Python', 'HTML'],
+    [0, 0, 1]
+  )
+);
