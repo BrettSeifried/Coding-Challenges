@@ -1,3 +1,5 @@
+// for OF, if IN
+// finds if two numbers together equal the targetsum
 function twoNumberSum(array, targetSum) {
   // Write your code here.
   // set an empty array
@@ -19,6 +21,9 @@ function twoNumberSum(array, targetSum) {
 
 console.log('TwoNumSum', twoNumberSum([3, 5, -4, 8, 11, 1, -1, 6], 10));
 
+// -----------------
+// Are All numbers in sequence in Array.
+// compare sequence to array, add to lets. if === then true
 function isValidSubsequence(array, sequence) {
   // Write your code here.
   let arrIdx = 0;
@@ -35,6 +40,9 @@ console.log(
   isValidSubsequence([5, 1, 22, 25, 6, -1, 8, 10], [1, 6, -1, 10])
 );
 
+//-------------------
+// Square each number in an array,
+// For Loop, then sort from lowest to highest.
 function sortedSquaredArray(array) {
   // Write your code here.
   // .fill sets array.length to all 0s.
@@ -52,7 +60,11 @@ function sortedSquaredArray(array) {
 }
 console.log('sortedArr', sortedSquaredArray([1, 2, 3, 5, 6, 8, 9]));
 
-// used on line 73, looks to results array on who won, 1 or 0
+//------------
+// Taking an object of Arrays to find a tournament winner
+// for loop, find out which team won the most
+
+// used on line  w/ winning team, looks to results array on who won, 1 or 0
 const homeWin = 1;
 
 function tournamentWinner(competitions, results) {
@@ -70,10 +82,10 @@ function tournamentWinner(competitions, results) {
     const result = results[i];
     // Returns which TEAM won.
     const [homeTeam, awayTeam] = competitions[i];
-    // Line 55, if 1, home team wins, else 0 and away team wins
+    // Const above at start, if 1, home team wins, else 0 and away team wins
     const winningTeam = result === homeWin ? homeTeam : awayTeam;
 
-    //Line 88 Function
+    // Function below
     updateScores(winningTeam, 3, scores);
 
     // if winning team NOW has more points than the lead team, make it the lead team.
@@ -84,7 +96,7 @@ function tournamentWinner(competitions, results) {
   return leadTeam;
 }
 
-// Line 64 Grabs team name, gives points, updates scores array
+// see updateScores fx above Grabs team name, gives points, updates scores array
 function updateScores(team, points, scores) {
   //if no team is in scores, inserts into object
   if (!(team in scores)) scores[team] = 0;
@@ -101,3 +113,36 @@ console.log(
     [0, 0, 1]
   )
 );
+
+// -----------
+// Finding lowest amount of change when given an index of various amounts
+// for OF loop, if less than, add more, if more return
+function nonConstructibleChange(coins) {
+  // Write your code here.
+  // sort coins into lowest to highest
+  coins.sort((a, b) => a - b);
+  // set current change able to be created
+  let purse = 0;
+  // loop through coins
+  for (const coin of coins) {
+    // if the current coin is greater than purse +1, it can not make more.
+    if (coin > purse + 1) return purse + 1;
+    // else, the next i is lower than the purse + 1, it can be added everything below it
+    purse += coin;
+  }
+
+  return purse + 1;
+}
+
+console.log(
+  'Coin sort Lowest amount of change',
+  nonConstructibleChange([5, 7, 1, 1, 2, 3, 22])
+);
+
+//ISO Gram -----------------------
+// see if each letter is unquie in the String
+function isIsogram(str) {
+  return new Set(str.toLowerCase()).size === str.length;
+}
+
+console.log('IsoGram', isIsogram('Dermatoglyphics'));
