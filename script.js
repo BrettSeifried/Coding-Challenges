@@ -146,3 +146,30 @@ function isIsogram(str) {
 }
 
 console.log('IsoGram', isIsogram('Dermatoglyphics'));
+
+//BST Trees -------------------
+function findClosestValueInBst(tree, target) {
+  // Recursive function to run through the tre O(log(n))
+  return findClosestValueHelper(tree, target, tree.value);
+}
+
+function findClosestValueHelper(tree, target, closest) {
+  // If no further leafs, return closest, end recursion
+  if (tree === null) return closest;
+  // Sets a new closest only if smaller.
+  if (Math.abs(target - closest) > Math.abs(target - tree.value)) {
+    closest = tree.value;
+  }
+  // Move to left side if the target is smaller, Smaller is always lesser
+  if (target < tree.value) {
+    return findClosestValueHelper(tree.left, target, closest);
+    // Move to right side if target is great, Right side always larger
+  } else if (target > tree.value) {
+    return findClosestValueHelper(tree.right, target, closest);
+    //if Equal too target, return.
+  } else {
+    return closest;
+  }
+}
+
+console.log(findClosestValueInBst());
