@@ -216,3 +216,47 @@ function nodeDepths(root, depth = 0) {
 }
 
 console.log('Node Depths', nodeDepths());
+
+// Depth put each node into an array ---------
+class Node {
+  constructor(name) {
+    this.name = name;
+    this.children = [];
+  }
+
+  addChild(name) {
+    this.children.push(new Node(name));
+    return this;
+  }
+
+  //CODE STARTS HERE
+  depthFirstSearch(array) {
+    //this gives a node with name, and an array of further names and children
+    array.push(this.name);
+    //recursion for the next node of children.
+    for (const child of this.children) {
+      child.depthFirstSearch(array);
+    }
+    return array;
+  }
+}
+
+//Min Waiting time ------------------
+function minimumWaitingTime(queries) {
+  //sort from smallest to largest
+  queries.sort((a, b) => a - b);
+  // set a total waiting time to 0
+  let waitingTime = 0;
+  //loop through entire array
+  for (let i = 0; i < queries.length; i++) {
+    //set duration to i amount
+    const duration = queries[i];
+    // add 1 to give a remaining queries left
+    const remainingQueries = queries.length - (i + 1);
+    // Multiple the i times the remaining
+    waitingTime += duration * remainingQueries;
+  }
+  return waitingTime;
+}
+
+console.log('minWaitingTime', minimumWaitingTime([3, 2, 1, 2, 6]));
