@@ -173,3 +173,33 @@ function findClosestValueHelper(tree, target, closest) {
 }
 
 console.log(findClosestValueInBst());
+
+//Sums of a Branch, starts with root, ends at leaf Node
+// Recursion with keep sums
+
+function branchSums(root) {
+  // set an array to input sums
+  const sums = [];
+  //set initial value of 0
+  calcSums(root, 0, sums);
+  return sums;
+}
+
+function calcSums(node, runningSum, sums) {
+  //if at end of leaf nodes, return
+  if (!node) return;
+
+  //  set a newSum, adding the next value
+  const newSum = runningSum + node.value;
+  //if at a Leaf node, return the sum
+  if (!node.left && !node.right) {
+    // Push onto sums array
+    sums.push(newSum);
+    return;
+  }
+  // Recursive run through the nodes.
+  calcSums(node.left, runningSum, sums);
+  calcSums(node.right, runningSum, sums);
+}
+
+console.log('BST Sums', branchSums());
