@@ -203,3 +203,16 @@ function calcSums(node, runningSum, sums) {
 }
 
 console.log('BST Sums', branchSums());
+
+// Root/ Node Depth ----------------
+// depth = 0 makes an optiona parameter
+function nodeDepths(root, depth = 0) {
+  //set up Recursion to go through each branch.
+  if (root === null) return 0;
+  //Runs and adds left and right until null is hit.
+  return (
+    depth + nodeDepths(root.left, depth + 1) + nodeDepths(root.right, depth + 1)
+  );
+}
+
+console.log('Node Depths', nodeDepths());
