@@ -260,3 +260,28 @@ function minimumWaitingTime(queries) {
 }
 
 console.log('minWaitingTime', minimumWaitingTime([3, 2, 1, 2, 6]));
+
+// Assign by Shirt color and height -----------------
+function classPhotos(redShirtHeights, blueShirtHeights) {
+  // sort rows to tallest in [0]
+  redShirtHeights.sort((a, b) => b - a);
+  blueShirtHeights.sort((a, b) => b - a);
+
+  // set frontRow as Red or Blue
+  const frontRow = redShirtHeights[0] < blueShirtHeights[0] ? 'Red' : 'Blue';
+  for (let i = 0; i < redShirtHeights.length; i++) {
+    // loops through and checks each number in regards to [i] position
+    const redShirtHeight = redShirtHeights[i];
+    const blueShirtHeight = blueShirtHeights[i];
+
+    if (frontRow === 'Red') {
+      // checks if red row is taller at same [i]
+      if (redShirtHeight >= blueShirtHeight) return false;
+      //Checks if blue row is taller at same [i]
+    } else if (blueShirtHeight >= redShirtHeight) return false;
+  }
+  //if the back row is always taller, return true
+  return true;
+}
+
+console.log(classPhotos([5, 8, 1, 3, 4], [6, 9, 2, 4, 5]));
