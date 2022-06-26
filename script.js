@@ -285,3 +285,66 @@ function classPhotos(redShirtHeights, blueShirtHeights) {
 }
 
 console.log(classPhotos([5, 8, 1, 3, 4], [6, 9, 2, 4, 5]));
+
+//Tandem Bicycle, pair LArgest with smallest for fast ----------
+function tandemBicycle(redShirtSpeeds, blueShirtSpeeds, fastest) {
+  redShirtSpeeds.sort((a, b) => a - b);
+  blueShirtSpeeds.sort((a, b) => a - b);
+
+  // if looking for slowest, reverse array first
+  // can also be redShirtSpeeds.reverse()
+  if (!fastest) reverseArray(redShirtSpeeds);
+  // set toalspeed to 0
+  let totalSpeed = 0;
+  for (let i = 0; i < redShirtSpeeds.length; i++) {
+    //loop through redshirts
+    const rider1 = redShirtSpeeds[i];
+    //gives last i of the array
+    const rider2 = blueShirtSpeeds[blueShirtSpeeds.length - i - 1];
+    // find higher number.
+    totalSpeed += Math.max(rider1, rider2);
+  }
+  return totalSpeed;
+}
+
+//array.reverse() coded out.
+function reverseArray(array) {
+  let start = 0;
+  let end = array.length - 1;
+  while (start < end) {
+    const temp = array[start];
+    //swap array values
+    array[start] = array[end];
+    array[end] = temp;
+    //once start > end, it ends and is done.
+    start++;
+    end--;
+  }
+}
+
+console.log(tandemBicycle([5, 5, 3, 9, 2], [3, 6, 7, 2, 1], true));
+
+//Remove Duplicates from a Linked list. If sorted in ascending order
+function removeDuplicatesFromLinkedList(linkedList) {
+  let currentNode = linkedList;
+  //if null, its end of the list
+  while (currentNode !== null) {
+    //sets and checks current node with the next one
+    let nextDistinctNode = currentNode.next;
+    // Not null, AND values are not the same
+    while (
+      nextDistinctNode !== null &&
+      nextDistinctNode.value === currentNode.value
+    ) {
+      // If above is true, set next node
+      nextDistinctNode = nextDistinctNode.next;
+    }
+    // sets pointer to next disticnt node.
+    currentNode.next = nextDistinctNode;
+    // now we set current node to the next distincy node
+    currentNode = nextDistinctNode;
+  }
+  return linkedList;
+}
+
+console.log(removeDuplicatesFromLinkedList());
