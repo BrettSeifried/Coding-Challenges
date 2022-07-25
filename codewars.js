@@ -53,4 +53,16 @@ function makeNEgative(num) {
 // makeNegative(0);    // return 0
 // makeNegative(0.12); // return -0.12
 //---------------
-
+// Highest and lowest
+function highAndLow(numbers){
+    let high = numbers.split(' ').map(Number).sort((a,b) => b - a)
+    let highNum = high[0]
+    let lowNum = high[high.length -1]
+    
+    
+    console.log(high)
+    return highNum + ' ' + lowNum
+  }
+  //(highAndLow("8 3 -5 42 -1 0 0 -9 4 7 4 -4"), "42 -9");
+  //(highAndLow("1 2 3"), "3 1");
+  //----------------
