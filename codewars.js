@@ -35,3 +35,19 @@ function positiveSum(arr) {
   // Example [1,-4,7,12] => 1 + 7 + 12 = 20
 //------------------------
 
+// Return Negative
+function makeNegative(num) {
+    let result = 0;
+    if (num <= 0) {
+      return num
+    } else {
+      return -Math.abs(num)
+    }
+}
+
+// makeNegative(1);    // return -1
+// makeNegative(-5);   // return -5
+// makeNegative(0);    // return 0
+// makeNegative(0.12); // return -0.12
+//---------------
+
