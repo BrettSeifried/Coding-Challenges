@@ -84,9 +84,14 @@ function paperwork(n, m) {
   if (n < 0 || m < 0) {
     return 0;
   } else {
-    return (sum = n * m);
+    return n * m;
   }
 }
+
+//function paperwork(n, m) {
+//   return n > 0 && m > 0 ? n * m : 0
+// }
+
 // assert.strictEqual(paperwork(5,5), 25, 'Failed at paperwork(5, 5)');
 //     assert.strictEqual(paperwork(5,-5), 0, 'Failed at paperwork(5, -5)');
 //     assert.strictEqual(paperwork(-5,-5), 0, 'Failed at paperwork(-5, -5)');
