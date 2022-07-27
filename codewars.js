@@ -79,3 +79,17 @@ function friend(friends) {
 // assert.deepEqual(friend(["Love", "Your", "Face", "1"]), ["Love", "Your", "Face"])
 
 // --------------------
+// Multiple if both numbers are positive. return 0 if one number is negative
+function paperwork(n, m) {
+  if (n < 0 || m < 0) {
+    return 0;
+  } else {
+    return (sum = n * m);
+  }
+}
+// assert.strictEqual(paperwork(5,5), 25, 'Failed at paperwork(5, 5)');
+//     assert.strictEqual(paperwork(5,-5), 0, 'Failed at paperwork(5, -5)');
+//     assert.strictEqual(paperwork(-5,-5), 0, 'Failed at paperwork(-5, -5)');
+//     assert.strictEqual(paperwork(-5,5), 0, 'Failed at paperwork(-5, 5)');
+//     assert.strictEqual(paperwork(5,0), 0, 'Failed at paperwork(5, 0)');
+// -------------------
