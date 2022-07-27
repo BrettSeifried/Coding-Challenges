@@ -1,15 +1,15 @@
 // Find number of vowels in a word
 function getCount(str) {
-    let result = 0
-    let string = str.split('')
-    const vowels = ['a', 'e', 'i', 'o', 'u']
-      for ( const letters of str) {
-        if(vowels.includes(letters)) {
-          result++
-        }
+  let result = 0;
+  let string = str.split('');
+  const vowels = ['a', 'e', 'i', 'o', 'u'];
+  for (const letters of str) {
+    if (vowels.includes(letters)) {
+      result++;
+    }
   }
-    return result
-  }
+  return result;
+}
 
 //   const {assert} = require("chai");
 
@@ -22,31 +22,31 @@ function getCount(str) {
 //--------------------------------
 // Return Positives
 function positiveSum(arr) {
-    let result = 0;
-    
-    for (let i = 0; i < arr.length; i++) {
-      if (arr[i] >= 0) {
-        result += arr[i]
-      }
-    }
-    return result;
-  }
+  let result = 0;
 
-  // Example [1,-4,7,12] => 1 + 7 + 12 = 20
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] >= 0) {
+      result += arr[i];
+    }
+  }
+  return result;
+}
+
+// Example [1,-4,7,12] => 1 + 7 + 12 = 20
 //------------------------
 
 // Return Negative
 function makeNegative(num) {
-    let result = 0;
-    if (num <= 0) {
-      return num
-    } else {
-      return -Math.abs(num)
-    }
+  let result = 0;
+  if (num <= 0) {
+    return num;
+  } else {
+    return -Math.abs(num);
+  }
 }
 
 function makeNEgative(num) {
-    return -Math.abs(num)
+  return -Math.abs(num);
 }
 // makeNegative(1);    // return -1
 // makeNegative(-5);   // return -5
@@ -54,15 +54,28 @@ function makeNEgative(num) {
 // makeNegative(0.12); // return -0.12
 //---------------
 // Highest and lowest
-function highAndLow(numbers){
-    let high = numbers.split(' ').map(Number).sort((a,b) => b - a)
-    let highNum = high[0]
-    let lowNum = high[high.length -1]
-    
-    
-    console.log(high)
-    return highNum + ' ' + lowNum
-  }
-  //(highAndLow("8 3 -5 42 -1 0 0 -9 4 7 4 -4"), "42 -9");
-  //(highAndLow("1 2 3"), "3 1");
-  //----------------
+function highAndLow(numbers) {
+  let high = numbers
+    .split(' ')
+    .map(Number)
+    .sort((a, b) => b - a);
+  let highNum = high[0];
+  let lowNum = high[high.length - 1];
+
+  console.log(high);
+  return highNum + ' ' + lowNum;
+}
+//(highAndLow("8 3 -5 42 -1 0 0 -9 4 7 4 -4"), "42 -9");
+//(highAndLow("1 2 3"), "3 1");
+//----------------
+// Filter Friends with 4 letters
+function friend(friends) {
+  return friends.filter((word) => word.length === 4);
+}
+
+// assert.deepEqual(friend(["Ryan", "Kieran", "Mark"]), ["Ryan", "Mark"])
+// assert.deepEqual(friend(["Ryan", "Jimmy", "123", "4", "Cool Man"]), ["Ryan"])
+// assert.deepEqual(friend(["Jimm", "Cari", "aret", "truehdnviegkwgvke", "sixtyiscooooool"]), ["Jimm", "Cari", "aret"])
+// assert.deepEqual(friend(["Love", "Your", "Face", "1"]), ["Love", "Your", "Face"])
+
+// --------------------
