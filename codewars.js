@@ -98,3 +98,38 @@ function paperwork(n, m) {
 //     assert.strictEqual(paperwork(-5,5), 0, 'Failed at paperwork(-5, 5)');
 //     assert.strictEqual(paperwork(5,0), 0, 'Failed at paperwork(5, 0)');
 // -------------------
+// Given a number, Find all multiples of 3 or 5, and add them together
+
+// ------ How we got there -------
+// function solution(number){
+//   let sum = 0
+  
+//   for (let i = 0; i < number; i++) {
+//     if ( i % 3 === 0 || i % 5 === 0){
+//       sum += i;
+//       continue;
+//     } else if (i % 5 === 0) {
+//       sum =+ i;
+//       continue;
+//     } else {
+//       continue;
+//     }
+//   }
+//   return sum;
+// }
+
+//CLEANED UP CODE
+function solution(number){
+  var sum = 0;
+  
+  for(var i = 1;i< number; i++){
+    if(i % 3 == 0 || i % 5 == 0){
+      sum += i
+    }
+  }
+  return sum;
+}
+
+// test(10,23)
+
+//--------------
