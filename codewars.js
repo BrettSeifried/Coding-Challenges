@@ -133,3 +133,28 @@ function solution(number){
 // test(10,23)
 
 //--------------
+// Take out vowels
+function disemvowel(str) {
+  let newStr = str.split('')
+  let vowel = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
+  let result = []
+  for ( let i = 0; i < newStr.length; i++) {
+    if (!vowel.includes(newStr[i])) {
+      result.push(newStr[i]);
+    }
+  }
+  return result.join('');
+}
+
+// describe("Basic tests", () => {
+//   it("Testing for fixed tests", () => {
+//     assert.strictEqual(disemvowel("This website is for losers LOL!"), "Ths wbst s fr lsrs LL!")
+//     assert.strictEqual(disemvowel("No offense but,\nYour writing is among the worst I've ever read"), "N ffns bt,\nYr wrtng s mng th wrst 'v vr rd")
+//     assert.strictEqual(disemvowel("What are you, a communist?"), "Wht r y,  cmmnst?")
+//     })
+//   })
+
+// Best solution
+function disemvowel(str) {
+  return str.replace(/[aeiou]/gi, '');
+}
